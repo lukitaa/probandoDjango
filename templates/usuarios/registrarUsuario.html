@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Registrar usuarios </title>
+</head>
+<body>
+	<h3>Registre el usuario deseado</h3>
+	<form method="POST" enctype="multipart/form-data">
+		<!-- Token usado para la proteccion de datos -->
+		{% csrf_token %}
+		<!-- En esta parte se muestra un form con todos los campos especificados en el views.py -->
+		{{ form.as_p }}
+		<input type='submit' value='Registrar usuario'>
+	</form>
+</body>
+</html>
