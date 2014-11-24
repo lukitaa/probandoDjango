@@ -15,10 +15,10 @@
 		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
 		<div class="center-block">
 			<form method="POST" enctype="multipart/form-data">
-				<!-- Token usado para la proteccion de datos -->
+				
 				{% csrf_token %}
-				<!-- En esta parte se muestra un form con todos los campos especificados en el views.py -->
 				{{ form.as_p }}
+				
 				<input class="btn btn-info" type='submit' value='Registrar usuario'>
 			</form>
 		</div>
