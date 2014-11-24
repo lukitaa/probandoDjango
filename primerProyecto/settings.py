@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.usuarios',
+    'apps.inicio',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,3 +126,8 @@ MEDIA_ROOT = RUTA_PROYECTO.child('media')
 #trailing slash.
 #Examples: "httml://example.com/media","http://media.example.com/"
 MEDIA_URL = 'http://127.0.0.1:8000/media/'
+
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('inicio')
+LOGIN_REDIRECT_URL = reverse_lazy('inicio')
+LOGOUT_URL = reverse_lazy('logout')
