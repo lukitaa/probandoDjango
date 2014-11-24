@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+	Mostrar comentarios
+{% endblock %}
+
+{% block content %}
+
+	<div class="col-md-6 col-md-offset-3">
+		<h1> Muestra de todos los comentarios </h1>
+		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
+		<ul>
+			<!-- Por cada usuario de la lista de usuarios, que trae django -->
+			<div class="row center-block">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Comentario</th>
+						<th>Imagen</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for c in listaComments %}
+				<!-- Mostrar los valores de cada comentario -->
+				<tr>
+				<td><b>	{{c.comentario}}	</b></td>
+				<td><img src="{{MEDIA_URL}}{{c.imagen}}" widht="64" height="64"></td><br>
+				</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			
+			</div>
+		</ul>
+	</div>
+
+{% endblock %}

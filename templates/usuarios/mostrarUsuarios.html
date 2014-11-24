@@ -1,13 +1,10 @@
-<html>
-<head>
-	<title> Muestra de todos los usuarios </title>
+{% extends 'base.html' %}
+{% block title %}
+	Mostrar usuarios
+{% endblock %}
 
-	<!-- Bootstrap stuff -->
-	<link href="{{STATIC_URL}}css/styles.css" rel="stylesheet">
-	<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
-	<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
-</head>
-<body>
+{% block content %}
+
 	<div class="col-md-6 col-md-offset-3">
 		<h1> Muestra de todos los usuarios registrados </h1>
 		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
@@ -26,5 +23,4 @@
 		</ul>
 	</div>
 
-</body>
-</html>
+{% endblock %}
