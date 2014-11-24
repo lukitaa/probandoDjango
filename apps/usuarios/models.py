@@ -3,15 +3,14 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Usuario(models.Model):
-	usuario = modes.CharField(max_length=50)
-	password = models.CharField(max_length=50)
+class Usuarios(models.Model):
+	usuario = models.OneToOneField(User)
 	imagen = models.ImageField(upload_to='foto_usuario')
 
 	#Esto es utilizado para el texto que se va a observar desde el lado del admin
 	#A la hora de mostrar cada uno de los usuarios.
 	def __unicode__(self):
-		return "Usuario: " + self.usuario
+		return "Usuario: " + self.usuario.username
 
 #Esto no fue necesario, pero puede serlo mas adelante.
 #class UsuarioForm(ModelForm):
