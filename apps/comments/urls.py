@@ -8,5 +8,5 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^comentar/$', login_required(CrearComment.as_view()), name='crear_comentario'),
-    url(r'^mostrar/$', MostrarComments.as_view(), name='mostrar_comentarios'),
+    url(r'^mostrar/$', login_required(MostrarComments.as_view()), name='mostrar_comentarios'),
 ]
