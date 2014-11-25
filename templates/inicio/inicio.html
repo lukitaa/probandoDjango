@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+	
+{% block title %}
+	Sistema Django
+{% endblock %}
+
+{% block content %}
+
+	{% if user.is_authenticated %}
+		<div class="col-md-6 col-md-offset-3">
+		<h1>Bienvenido al sistema basico de Django {{user.username}}!</h1>
+		<h3>Desde aqui podra realizar las siguientes acciones:</h3>
+	
+		<br>
+		<div class="center-block">
+			<a href="comments/comentar" class="btn btn-warning center-block">Escribir un comentario</a>
+			<a href="comments/mostrar" class="btn btn-info center-block">Ver todos los comentarios</a>
+			
+			{% if user.is_superuser %}
+				<a href="usuarios/alta" class="btn btn-primary center-block">Registrar usuarios</a>
+				<a href="usuarios/mostrar" class="btn btn-success center-block">Ver usuarios</a>
+			{% endif %} 
+
+			<a href="/inicio/cerrar/" class="btn btn-danger center-block">Cerrar sesion</a>
+		</div>
+	</div>
+	
+	{% else %}
+	<div class="col-md-6 col-md-offset-3">
+		<form method="POST">
+			{% csrf_token %}
+			<h2>Para poder accedar al sistema debe loguearse.</h2>
+			<h4>Ingrese los datos correspondientes:</h4>
+			<label>Nombre de usuario:</label>
+			<input class="form-control" name="username" type="text" placeholder="Nombre de usuario"><br>
+			<label>Contraseña:</label>
+			<input class="form-control" name="password" type="password" placeholder="Ingrese su contraseña"><br>
+			<input class="btn btn-info" type='submit' value='Loguearse'>
+			<a href="usuarios/alta" class="btn btn-primary">Registrarse</a>
+		</form>
+	</div>
+	{% endif %}
+
+{% endblock %}

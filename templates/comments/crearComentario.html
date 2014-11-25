@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Crear comentarios
+{% endblock %}
+
+{% block content %}
+	<div class="col-md-7 col-md-offset-3">
+		<h1>¿En que estas pensado?, escribe un comentario.</h1>
+		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
+		<div class="center-block">
+			<form method="POST" enctype="multipart/form-data">
+				
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input class="btn btn-info" type='submit' value='Guardar comentario'>
+			</form>
+		</div>
+	</div>
+{% endblock %}

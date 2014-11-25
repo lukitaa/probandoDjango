@@ -1,19 +1,31 @@
-<html>
-<head>
-	<title> Muestra de todos los usuarios </title>
-	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css">
-</head>
-<body>
-	<h3> Muestra de todos los usuarios registrados </h3>
-	
-	<ul>
-		<!-- Por cada usuario de la lista de usuarios, que trae django -->
-		{% for usuario in listaUsuarios %}
-		<!-- Mostrar cada uno de los valores de cada usuario -->
-			<li><b>Usuario 	</b>	{{usuario.usuario}}	</li>
-			<li><b>Password </b>	{{usuario.password}}</li>
-			<li><b>Imagen 	</b>	<img src="{{MEDIA_URL}}{{usuario.imagen}}"></li>
-		{% endfor %}
-	</ul>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+	Mostrar usuarios
+{% endblock %}
+
+{% block content %}
+
+	{% if user.is_superuser %}
+	<div class="col-md-6 col-md-offset-3">
+		<h1> Muestra de todos los usuarios registrados </h1>
+		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
+		<ul>
+			<!-- Por cada usuario de la lista de usuarios, que trae django -->
+			<div class="row center-block">
+			{% for usuario in listaUsuarios %}
+			<!-- Mostrar cada uno de los valores de cada usuario -->
+				<li><b>Usuario: 	</b>	{{usuario.usuario}}	</li>
+				<li><b>Es administrador: </b>	
+					{% if usuario.usuario.is_superuser %} Si.
+					{% else %} No.	{% endif %} </li>
+				<li><b>Imagen: 	</b><br>	<img src="{{MEDIA_URL}}{{usuario.imagen}}" widht="480" height="320"></li><br>
+			{% endfor %}
+			</div>
+		</ul>
+	</div>
+	{% else %}
+		<!-- Redireccionar al inicio  -->
+		{% include 'inicio/inicio.html' %}
+	{% endif %}
+
+{% endblock %}

@@ -1,17 +1,23 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title> Registrar usuarios </title>
-</head>
-<body>
-	<h3>Registre el usuario deseado</h3>
-	<form method="POST" enctype="multipart/form-data">
-		<!-- Token usado para la proteccion de datos -->
-		{% csrf_token %}
-		<!-- En esta parte se muestra un form con todos los campos especificados en el views.py -->
-		{{ form.as_p }}
-		<input type='submit' value='Registrar usuario'>
-	</form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+	Registrar usuarios
+{% endblock %}
+
+{% block content %}
+	
+	<div class="col-md-7 col-md-offset-3">
+		<h1>Ingrese la informacion del usuario a registrar</h1>
+		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
+		<div class="center-block">
+			<form method="POST" enctype="multipart/form-data">
+				
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input class="btn btn-info" type='submit' value='Registrar usuario'>
+
+			</form>
+		</div>
+	</div>
+	
+{% endblock %}

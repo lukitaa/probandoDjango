@@ -11,8 +11,17 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    #URL de la pagina de usuarios.
+    #URLs de la app usuarios.
     url(r'^usuarios/' , include('apps.usuarios.urls')),
+
+    #URLs de la app inicio.
+    url(r'^inicio/' , include('apps.inicio.urls')),    
+
+    #URL de la pagina de inicio.
+    url(r'^$', include('apps.inicio.urls')),
+
+    #URLs de la app comments.
+    url(r'^comments/', include('apps.comments.urls')),
 
     #URL en la cual se tienen las imagenes guardadas.
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, } ),

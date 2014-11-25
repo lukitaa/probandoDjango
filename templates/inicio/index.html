@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Bienvenido al proyecto de prueba de Django!</title>
+
+	{% load staticfiles %}
+	<link href="static/css/styles.css" rel="stylesheet"/>
+	<link href="static/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="static/vendors/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+	<div class="col-sm-offset-3 col-sm-9">
+		<h1>Bienvenido al sitio de prueba del proyecto Django!</h1>
+	</div>
+
+	{% block content %}
+    <br>
+	<!-- Muestra del boton que redirecciona al alta de un usuario -->
+	<form action="usuarios/alta" class="col-sm-offset-5 col-sm-7">
+		<button class="btn btn-warning" ><b>Sector de alta de usuarios</b></button>
+	</form>
+	
+	<!-- Muestra del boton que redirecciona a la muestra de los usuarios -->
+	<form action="usuarios/mostrar" class="col-sm-offset-5 col-sm-7">
+		<button class="btn btn-success" ><b>Sector muestra de usuarios</b></button>
+	</form>
+	{% endblock %}
+
+	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
