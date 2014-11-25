@@ -15,12 +15,13 @@
 		<div class="center-block">
 			<a href="comments/comentar" class="btn btn-warning center-block">Escribir un comentario</a>
 			<a href="comments/mostrar" class="btn btn-info center-block">Ver todos los comentarios</a>
+			
 			{% if user.is_superuser %}
-			<a href="usuarios/mostrar" class="btn btn-primary center-block">Ver usuarios</a>
-			<a href="usuarios/alta" class="btn btn-success center-block">Registrar usuarios</a>
+				<a href="usuarios/alta" class="btn btn-primary center-block">Registrar usuarios</a>
+				<a href="usuarios/mostrar" class="btn btn-success center-block">Ver usuarios</a>
 			{% endif %} 
 
-			<a href="inicio/cerrar/" class="btn btn-danger center-block">Cerrar sesion</a>
+			<a href="/inicio/cerrar/" class="btn btn-danger center-block">Cerrar sesion</a>
 		</div>
 	</div>
 	

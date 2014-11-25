@@ -3,6 +3,7 @@ from django.views.generic import CreateView, ListView, FormView
 from .models import Usuarios
 from django.core.urlresolvers import reverse_lazy
 from .forms import UserForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 class RegistrarUsuario(CreateView):
@@ -24,6 +25,10 @@ class RegistrarUsuario(CreateView):
 		usuarios.save()
 		return super(RegistrarUsuario, self).form_valid(form)
 
+	def myview(request):
+		if request.user.get_profile().is_store():
+			return HttpResponseRedirect('inicio/inicio.html')
+
 class MostrarUsuarios(ListView):
 	#El template que se va a utilizar
 	template_name = 'usuarios/mostrarUsuarios.html'
@@ -32,3 +37,7 @@ class MostrarUsuarios(ListView):
 	#Este es el nombre de la lista que django retorna a la hora de utilizar
 	#a la hora de querer mostrar los objetos
 	context_object_name = "listaUsuarios"
+
+	def myview(request):
+		if request.user.get_profile().is_superuser():
+			return HttpResponseRedirect('inicio/inicio.html')

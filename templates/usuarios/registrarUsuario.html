@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+	
+	{% if user.is_superuser %}
 	<div class="col-md-7 col-md-offset-3">
 		<h1>Ingrese la informacion del usuario a registrar</h1>
 		<a href="/" class="btn btn-primary center-block">Volver a la pagina principal</a><br>
@@ -13,9 +15,14 @@
 				
 				{% csrf_token %}
 				{{ form.as_p }}
-				
 				<input class="btn btn-info" type='submit' value='Registrar usuario'>
+
 			</form>
 		</div>
 	</div>
+	{% else %} 
+		<!-- Redireccionar al inicio  -->
+		{% include 'inicio/inicio.html' %}
+	{% endif %} 	
+
 {% endblock %}
