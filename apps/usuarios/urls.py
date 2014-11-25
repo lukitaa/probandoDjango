@@ -7,6 +7,6 @@ urlpatterns = [
     # url(r'^$', 'primerProyecto.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^alta/$' , login_required(RegistrarUsuario.as_view()) , name="registrar_usuarios"),
+    url(r'^alta/$' , RegistrarUsuario.as_view() , name="registrar_usuarios"),
     url(r'^mostrar/$' , login_required(MostrarUsuarios.as_view()) , name="mostrar_usuarios"),
 ]

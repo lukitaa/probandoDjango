@@ -7,3 +7,7 @@ class Comments(models.Model):
 
 	def __unicode__(self):
 		return "Usuario:" + self.usuario + "Comentario:" + self.comentario
+
+	#Funcion para retornar la URL de la imagen de perfil
+	def url_imagen(self):
+		return 'http://localhost:8000/media/%s' % self.imagen		

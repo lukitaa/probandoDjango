@@ -10,7 +10,11 @@ class Usuarios(models.Model):
 	#Esto es utilizado para el texto que se va a observar desde el lado del admin
 	#A la hora de mostrar cada uno de los usuarios.
 	def __unicode__(self):
-		return "Usuario: " + self.usuario.username
+		return self.usuario.username
+
+	#Funcion para retornar la URL de la imagen de perfil
+	def url_imagen(self):
+		return 'http://localhost:8000/media/%s' % self.imagen
 
 #Esto no fue necesario, pero puede serlo mas adelante.
 #class UsuarioForm(ModelForm):
